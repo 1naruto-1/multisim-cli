@@ -1,6 +1,6 @@
 # multisim-cli
 
-用文字控制 NI Multisim 14 的命令行工具：按网表和坐标生成可编辑的 `.ms14` 电路，导出预览并自检连线，用 Multisim 自己的仿真引擎取数，打开 Multisim 截取真实的示波器、波特图仪面板。也可以作为 Claude Code 的 skill 使用。
+用文字控制 NI Multisim 14 的命令行工具：按网表和坐标生成可编辑的 `.ms14` 电路，导出预览并自检连线，用 Multisim 自己的仿真引擎取数，打开 Multisim 截取真实的示波器、波特图仪面板。也可以作为通用的 Agent Skill 使用（`SKILL.md` 格式，支持 skills 的编程 agent 都能用）。
 
 ## 功能
 
@@ -22,8 +22,8 @@
 ## 安装
 
 ```powershell
-git clone https://github.com/1naruto-1/multisim-cli
-cd multisim-cli
+git clone https://github.com/1naruto-1/multisim-cli "$env:USERPROFILE\.agents\skills\multisim-cli"
+cd "$env:USERPROFILE\.agents\skills\multisim-cli"
 pip install -e .[capture]
 
 # 32 位 Python（用 uv 最省事）
@@ -38,7 +38,11 @@ multisim-cli parts init     # 用本机 Multisim 建元件库（约半分钟）
 
 路径默认按 Multisim 的标准安装位置自动查找，不同时在仓库目录下放一个 `config.json` 覆盖（键见 `references/parts.md`）。
 
-作为 Claude Code skill：把仓库克隆或链接到 `~/.claude/skills/multisim-cli`，`SKILL.md` 即为说明。
+作为 Agent Skill：按上面的命令克隆到 `~/.agents/skills/multisim-cli` 即可，`SKILL.md` 即为说明。如果你用的 agent 只读自己的 skills 目录，建一个目录联接过去即可，例如 Claude Code：
+
+```powershell
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\multisim-cli" -Target "$env:USERPROFILE\.agents\skills\multisim-cli"
+```
 
 ## 快速开始
 
