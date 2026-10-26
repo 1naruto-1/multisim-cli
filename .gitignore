@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+# 本机路径覆盖，不入库
+config.json

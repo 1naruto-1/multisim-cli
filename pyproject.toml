@@ -1,0 +1,19 @@
+[project]
+name = "multisim-cli"
+version = "0.1.0"
+description = "用文字控制 NI Multisim 14：生成电路、预览、仿真取数、真实截图"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+capture = ["pywin32", "pillow", "numpy", "scipy"]
+
+[project.scripts]
+multisim-cli = "multisim_cli.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["multisim_cli"]
